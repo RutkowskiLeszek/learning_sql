@@ -1,0 +1,377 @@
+--PokaŅ wszystkich zawodnikůw
+SELECT *
+FROM Zawodnicy
+
+--PokaŅ imiona i nazwiska zawodnikůw
+SELECT Imie, Nazwisko
+FROM Zawodnicy
+
+--PokaŅ 3 zawodnikůw
+SELECT TOP 3 *
+FROM Zawodnicy
+
+--PokaŅ imiona i nazwiska dwůch kibicůw
+SELECT TOP 2 Imie, Nazwisko
+FROM Kibice
+
+--PokaŅ unikalne imiona kibicow
+SELECT DISTINCT Imie
+FROM Kibice
+
+SELECT Imie Nazwisko 
+FROM Zawodnicy
+
+--Wyúwietl nazwy miejsc, w ktůrych odbywajĻ siÍ zawody
+SELECT Nazwa
+FROM Miejsce
+
+--PokaŅ jakie rodzaje trofeůw moŅna zdobyś
+SELECT DISTINCT ZdobyteTrofeum
+FROM Trofea
+
+--Wyúwietl 5 kibicůw
+SELECT TOP 5 *
+FROM Kibice
+
+--PokaŅ nazwy dyscyplin
+SELECT Nazwa 
+FROM Dyscyplina
+
+--PokaŅ 3 nazwy trofeůw
+SELECT TOP 3 ZdobyteTrofeum
+FROM Trofea
+
+--Znajdü wúrůd kibicůw wszystkie Dagmary
+SELECT *
+FROM Kibice
+WHERE Imie = 'Dagmara'
+
+--PokaŅ bilety, ktůre kosztowa≥y przynajmniej 100z≥
+SELECT *
+FROM KibicZawody
+WHERE CenaBiletu >= 100
+
+--PokaŅ wszystkich zawodnikůw oprůcz Faustyny
+SELECT *
+FROM Zawodnicy
+WHERE Imie <> 'Faustyna'
+
+--Znajdü kibicůw, ktůrzy nie naleŅĻ do Ņadnego sotwarzyszenia
+SELECT *
+FROM Kibice
+WHERE NrStowarzyszenia IS NULL
+
+--Znajdü wszystkich kibicůw o imieniu Olga i Dagmara
+SELECT *
+FROM Kibice
+WHERE Imie IN ('Olga', 'Dagmara')
+
+--PokaŅ wszystkich zawodnikůw poza FaustynĻ, LidiĻ i Januszem
+SELECT *
+FROM Zawodnicy
+WHERE Imie NOT IN ('Faustyna', 'Lidia', 'Janusz')
+
+--Znajdü zawody, ktůre odby≥y siÍ 18 maja 2019 roku
+SELECT *
+FROM Zawody
+WHERE Data = '2019-05-18'
+
+--Znajdü wszystkie zawody, ktůre odby≥ siÍ w wakacje
+SELECT *
+FROM Zawody
+WHERE Data BETWEEN '2019-07-01' AND '2019-08-31'
+
+--PokaŅ bilety z zawodůw nr 1 koszujĻce maksymalnie 50z≥ 
+SELECT *
+FROM KibicZawody
+WHERE CenaBiletu <= 50 AND NrZawodow = 1
+
+--Znajdü wszystkich kibicůw o imieniu Olga i Dagmara
+SELECT *
+FROM Kibice
+WHERE Imie = 'Olga' OR Imie = 'Dagmara'
+
+--Znajdü wszystkie zawody, ktůre odby≥ siÍ w wakacje
+SELECT *
+FROM Zawody
+WHERE Data >= '2019-07-01' AND Data <= '2019-08-31'
+
+--Znajdü wszystkie zdobyte z≥ote trofea
+SELECT *
+FROM Trofea
+WHERE ZdobyteTrofeum LIKE '%z≥oty%'
+
+--Znajdü wszystkie zawodniczki
+SELECT *
+FROM Zawodnicy
+WHERE Imie LIKE '%a'
+
+SELECT *
+FROM Zawodnicy
+WHERE PESEL LIKE '%[02468]_'
+
+--Jakie moŅna zdobyś puchary?
+SELECT DISTINCT ZdobyteTrofeum
+FROM Trofea
+WHERE ZdobyteTrofeum LIKE '%puchar%'
+
+--PokaŅ nazwy miejsc, gdzie odby≥y siÍ zawody w Grajewie
+SELECT Nazwa
+FROM Miejsce
+WHERE Miejscowosc = 'Grajewo'
+
+--PokaŅ mÍŅczyzn nienaleŅĻcych do Ņadnego stowarzyszenia
+SELECT *
+FROM Kibice
+WHERE Imie NOT LIKE '%a' AND NrStowarzyszenia IS NULL
+
+--PokaŅ zawodnikůw urodzonych w latach 90tych
+SELECT *
+FROM Zawodnicy
+WHERE DataUrodzenia BETWEEN '1990-01-01' AND '1999-12-31'
+
+--Znajdü wszystkich mÍŅczyzn wúrůd zawodnikůw
+SELECT *
+FROM Zawodnicy
+WHERE Imie NOT LIKE '%a'
+
+SELECT *
+FROM Zawodnicy
+WHERE PESEL LIKE '%[13579]_'
+
+--PokaŅ wszystkie zdobyte grajewskie puchary
+SELECT *
+FROM Trofea
+WHERE ZdobyteTrofeum LIKE '%puchar%grajew%'
+
+--PokaŅ zawody, ktůre odby≥ siÍ w pierwszej po≥owie 2019 roku
+SELECT *
+FROM Zawody
+WHERE Data BETWEEN '2019-01-01' AND '2019-06-30'
+
+--Kiedy urodzi≥a siÍ zawodniczka Kaja?
+SELECT DataUrodzenia
+FROM Zawodnicy
+WHERE Imie = 'Kaja'
+
+--PokaŅ bilety kosztujĻce 100z≥
+SELECT *
+FROM KibicZawody
+WHERE CenaBiletu = 100
+
+--Posortuj zawodnikůw alfabetycznie po nazwisku
+SELECT *
+FROM Zawodnicy
+ORDER BY Nazwisko
+
+--UporzĻdkuj bilety malejĻco wg ceny pomijajĻc te bezp≥atne
+SELECT *
+FROM KibicZawody
+WHERE CenaBiletu <> 0
+ORDER BY CenaBiletu DESC
+
+--UporzĻdkuj zawody wg miejsca i daty
+SELECT *
+FROM Zawody
+ORDER BY Miejsce, Data
+
+--PokaŅ najdroŅszy bilet
+SELECT TOP 1 *
+FROM KibicZawody
+ORDER BY CenaBiletu DESC
+
+--PokaŅ trzech najstarszych zawodnikůw
+SELECT TOP 3 *
+FROM Zawodnicy
+ORDER BY DataUrodzenia
+
+--PokaŅ zawody od najnowszego do najstarszego
+SELECT *
+FROM Zawody
+ORDER BY Data DESC
+
+--Posortuj alfabetycznie wszystkie moŅliwe do zdobycia puchary
+SELECT DISTINCT ZdobyteTrofeum
+FROM Trofea
+WHERE ZdobyteTrofeum LIKE '%puchar%'
+ORDER BY ZdobyteTrofeum
+
+--PokaŅ pierwszĻ parÍ biegaczy zgodnie z alfabetem (biegi to dyscypliny 1,2,3)
+SELECT TOP 2 *
+FROM Zawodnicy
+WHERE GlownaDyscyplina IN (1,2,3)
+ORDER BY Nazwisko
+
+--PokaŅ najm≥odszĻ kobietÍ
+SELECT TOP 1 *
+FROM Zawodnicy
+WHERE Imie LIKE '%a'
+ORDER BY DataUrodzenia DESC
+
+--Posortuj alfabetycznie wg nazwy zawody z drugiego kwarta≥u 2019 roku
+SELECT *
+FROM Zawody
+WHERE Data BETWEEN '2019-04-01' AND '2019-06-30'
+ORDER BY Nazwa
+
+--Po≥Ļcz imiÍ i nazwisko zawodnikůw tak, aby wyúwietla≥o siÍ w jednej kolumnie
+SELECT Imie + ' ' + Nazwisko AS ImieNazwisko
+FROM Zawodnicy
+
+SELECT CONCAT(Imie, ' ', Nazwisko)
+FROM Zawodnicy
+
+--PokaŅ imiÍ oraz pierwszĻ literÍ imienia kaŅdego z zawodnikůw
+SELECT Imie, LEFT(Imie, 1) AS PierwszaLiteraImienia
+FROM Zawodnicy
+
+--Znajdü wszystkie kobiety wúrůd zawodnikůw
+SELECT *
+FROM Zawodnicy
+WHERE RIGHT(Imie, 1) = 'a'
+
+--PokaŅ imiona i nazwiska mÍŅczyzn (sprawdü po PESELu)
+SELECT Imie, Nazwisko
+FROM Zawodnicy
+WHERE SUBSTRING(PESEL, 10,1) IN ('1', '3', '5', '7', '9')
+
+--Znajdü d≥ugoúś najd≥uŅszego nazwiska zawodnika
+SELECT TOP 1 LEN(Nazwisko) AS DlugoscNazwiska
+FROM Zawodnicy
+ORDER BY DlugoscNazwiska DESC
+
+--PokaŅ bilety razem z ich cenami netto (odejmij 23% VATu)
+SELECT *, ROUND(CenaBiletu / 1.23, 2) AS CenaBiletuNetto
+FROM KibicZawody
+
+--Znajdü zawody, ktůre odby≥y siÍ w wakacje
+SELECT *
+FROM Zawody
+WHERE MONTH(Data) IN (7,8)
+
+--Jaka jest teraz data i godzina?
+SELECT GETDATE()
+
+--PokaŅ bilety razem z ich cenami netto (odejmij 23% VATu)
+SELECT *, CAST(CenaBiletu / 1.23 AS decimal(10,2)) AS CenaBiletuNetto
+FROM KibicZawody
+
+--Ile w sumie wp≥ynÍ≥o pieniÍdzy za bilety?
+SELECT SUM(CenaBiletu) AS SumaCen
+FROM KibicZawody
+
+--Jaka by≥a úrednia cena biletu pomijajĻc bezp≥atne?
+SELECT AVG(CenaBiletu) AS SredniaCena
+FROM KibicZawody
+WHERE CenaBiletu <> 0
+
+SELECT AVG(CAST(CenaBiletu AS decimal(10,2))) AS SredniaCena
+FROM KibicZawody
+WHERE CenaBiletu <> 0
+
+SELECT CAST(AVG(CAST(CenaBiletu AS decimal(10,2))) AS decimal(10,2)) AS SredniaCena
+FROM KibicZawody
+WHERE CenaBiletu <> 0
+
+--Kiedy urodzi≥ siÍ najstarszy zawodnik?
+SELECT MIN(DataUrodzenia)
+FROM Zawodnicy
+
+--Ile jest kibicůw w bazie?
+SELECT COUNT(*)
+FROM Kibice
+
+--Ilu jest kibicůw zrzeszonych w stowarzyszeniach?
+SELECT COUNT(NrStowarzyszenia)
+FROM Kibice
+
+--Ile zawodůw odby≥o siÍ w pierwszej po≥owie 2019 roku?
+SELECT COUNT(*)
+FROM Zawody
+WHERE MONTH(Data) <= 6 
+AND YEAR(Data) = 2019
+
+--Ile jest kobiet wúrůd zawodnikůw?
+SELECT COUNT(*)
+FROM Zawodnicy
+WHERE PESEL LIKE '%[02468]_'
+
+--Wyúwietl imiona, nazwiska i inicja≥y zawodnikůw
+SELECT Imie, 
+Nazwisko, 
+LEFT(Imie, 1) + LEFT(Nazwisko, 1) AS Inicjaly
+FROM Zawodnicy
+
+--Ilu kibicůw nie jest zrzeszonych w stowarzyszeniu?
+SELECT COUNT(*) - COUNT(NrStowarzyszenia) AS Ilosc
+FROM Kibice
+
+--Ile zdobyto pucharůw?
+SELECT COUNT(*)
+FROM Trofea
+WHERE ZdobyteTrofeum LIKE '%puchar%'
+
+--Jeúli wydrukowanie kaŅdego biletu kosztowa≥o 2z≥
+--to jaki by≥ koszt wydrukowania biletůw
+--i ile zarobiliúmy na nich?
+SELECT COUNT(*) * 2 AS KosztWydrukuBiletow,
+	SUM(CenaBiletu) - COUNT(*) * 2 AS Zarobek
+FROM KibicZawody
+
+--Ile mamy kobiet w stowarzyszeniach?
+SELECT COUNT(*) AS Ilosc
+FROM Kibice
+WHERE RIGHT(Imie, 1) = 'a'
+	AND NrStowarzyszenia IS NOT NULL
+
+--PokaŅ nazwy wydarzeŮ, ktůre odby≥y siÍ w czerwcu
+SELECT Nazwa
+FROM Zawody
+WHERE MONTH(Data) = 6
+
+--PokaŅ najm≥odszĻ kobietÍ urodzonĻ w latach 90tych
+SELECT TOP 1 *
+FROM Zawodnicy
+WHERE SUBSTRING(PESEL, 10, 1) IN ('0', '2', '4', '6', '8')
+	AND YEAR(DataUrodzenia) BETWEEN 1990 AND 1999
+ORDER BY DataUrodzenia DESC
+
+--Ile na bilety podczas pierwszych zawodůw wydali kibice?
+SELECT SUM(CenaBiletu) AS SumaWydatkow
+FROM KibicZawody
+WHERE NrZawodow = 1
+
+--Ile kupiono biletůw podczas pierwszych zawodůw?
+SELECT COUNT(*) AS IloscBiletow
+FROM KibicZawody
+WHERE NrZawodow = 1
+
+--Ile znakůw ma najd≥uŅsze imiÍ i nazwisko zawodnika oddzielone spacjĻ
+SELECT TOP 1 LEN(Imie + ' ' + Nazwisko) AS Dlugosc
+FROM Zawodnicy
+ORDER BY Dlugosc DESC
+
+--Ktůry mamy dzisiaj rok?
+SELECT YEAR(GETDATE()) AS Rok
+
+--PokaŅ wszystkie olimpiady i zawody ogůlnopolskie
+SELECT *
+FROM Zawody
+WHERE Nazwa LIKE '%olimpiada%'
+	OR Nazwa LIKE '%ogůlnopolsk%'
+
+--Stwůrz dla niestowarzyszonych kibicek identyfikator:
+--pierwsza litera imienia z kropkĻ i nazwisko
+SELECT LEFT(Imie, 1) + '. ' + Nazwisko AS Identyfikator
+FROM Kibice
+WHERE RIGHT(Imie, 1) = 'a'
+	AND NrStowarzyszenia IS NULL
+
+--PokaŅ imiona i nazwiska zawodnikůw p≥ci mÍskiej 
+--majĻcych przynajmniej 25 lat (patrzĻc tylko na rok urodzenia)
+--dla ktůrych g≥ůwnĻ dyscyplinĻ nie sĻ biegi (biegi to dyscypliny 1,2,3)
+SELECT Imie, Nazwisko
+FROM Zawodnicy
+WHERE SUBSTRING(PESEL, 10, 1) IN ('1', '3', '5', '7', '9')
+	AND YEAR(GETDATE()) - YEAR(DataUrodzenia) >= 25
+	AND GlownaDyscyplina NOT IN (1, 2, 3)
