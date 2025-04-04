@@ -1,3 +1,5 @@
+new database
+
 CREATE TABLE Zawodnicy (IdZawodnicy INTEGER PRIMARY KEY IDENTITY , Imie varchar(10) NOT NULL, Nazwisko varchar(12) NOT NULL, DataUrodzenia datetime NOT NULL, GlownaDyscyplina int NOT NULL, PESEL varchar(11) NOT NULL)
 INSERT INTO Zawodnicy (Imie,Nazwisko,DataUrodzenia,GlownaDyscyplina,PESEL) VALUES ('Faustyna', 'Wiśniewska', '2000-02-21', 1, '00222112341')
 INSERT INTO Zawodnicy (Imie,Nazwisko,DataUrodzenia,GlownaDyscyplina,PESEL) VALUES ('Remigiusz', 'Marciniak', '1994-01-15', 3, '94011512332')
